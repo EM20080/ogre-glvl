@@ -5,7 +5,8 @@ This is a modified build of **OGRE 1.9.0** (Object-Oriented Graphics Rendering E
 ## Changes from Original OGRE 1.9.0
 
 ### Modifications
-- **Visual Studio 2022 Support**: Updated for modern MSVC toolchain (thanks to Skyth for the base patch)
+
+- **Visual Studio 2022 Support**: Updated for modern MSVC toolchain (thanks to [Skyth](https://github.com/blueskythlikesclouds) for the base patch)
   - Added `legacy_stdio_definitions.lib` linking to Direct3D9/11 render systems
   - Disabled precompiled headers to avoid compilation errors
   - Fixed const-correctness in sample comparator operators
@@ -14,6 +15,7 @@ This is a modified build of **OGRE 1.9.0** (Object-Oriented Graphics Rendering E
 - **CMake 3.5+ Requirement**: Updated from CMake 2.6.2 for better build system support
 
 ### Simplified Build Configuration
+
 - **Windows x86 Only**: Removed non-Windows platforms (Android, iOS, macOS)
 - **Direct3D Only**: Removed OpenGL render systems (GL, GL3Plus, GLES, GLES2)
 - **No Samples/Tools/Tests**: Stripped unnecessary build components for cleaner repository
