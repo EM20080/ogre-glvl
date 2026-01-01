@@ -20,7 +20,9 @@ This is a modified build of **OGRE 1.9.0** (Object-Oriented Graphics Rendering E
 - **Streamlined Output**: Simplified build paths (`out/build/bin` and `out/build/lib`)
 
 ### Additional Components
+
 - **FreeImage Support**: Included FreeImage 3.18.0 (x32) in `RequiredLibs/` for image codec support
+
 ## Prerequisites
 
 1. **Visual Studio 2022** with CMake support
@@ -35,8 +37,9 @@ This is a modified build of **OGRE 1.9.0** (Object-Oriented Graphics Rendering E
 2. Select configuration: `x86-Release`
 3. Build → Build All
 
-Output DLLs will be in `out/build/bin/`
+Output DLLs will be in `out/build/bin/`  
 Output Libs will be in `out/lib/`
+
 ## License
 
 Original OGRE is licensed under the MIT License. See `COPYING` for details.
