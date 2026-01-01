@@ -1,25 +1,48 @@
-Please read ReadMe.html in the Docs folder.
+# OGRE 1.9.0 - SonicGLVL Build
 
------
+This is a modified build of **OGRE 1.9.0** (Object-Oriented Graphics Rendering Engine) specifically configured for **Visual Studio 2022** and **SonicGLVL** compatibility.
 
-OGRE (www.ogre3d.org) is made available under the MIT License.
+## Changes from Original OGRE 1.9.0
 
-Copyright (c) 2000-2013 Torus Knot Software Ltd
+### Modifications
+- **Visual Studio 2022 Support**: Updated for modern MSVC toolchain (thanks to Skyth for the base patch)
+  - Added `legacy_stdio_definitions.lib` linking to Direct3D9/11 render systems
+  - Disabled precompiled headers to avoid compilation errors
+  - Fixed const-correctness in sample comparator operators
+- **DirectX SDK June 2010 Integration**: Full d3dx9 support for legacy shader compilation
+- **vcpkg Package Manager**: Automated dependency management (zlib, boost-thread, freetype, zziplib)
+- **CMake 3.5+ Requirement**: Updated from CMake 2.6.2 for better build system support
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+### Simplified Build Configuration
+- **Windows x86 Only**: Removed non-Windows platforms (Android, iOS, macOS)
+- **Direct3D Only**: Removed OpenGL render systems (GL, GL3Plus, GLES, GLES2)
+- **No Samples/Tools/Tests**: Stripped unnecessary build components for cleaner repository
+- **Streamlined Output**: Simplified build paths (`out/build/bin` and `out/build/lib`)
 
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
+### Additional Components
+- **FreeImage Support**: Included FreeImage 3.18.0 (x32) in `RequiredLibs/` for image codec support
+## Prerequisites
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-THE SOFTWARE.
+1. **Visual Studio 2022** with CMake support
+2. **CMake 3.5+**
+3. **DirectX SDK (June 2010)** - [Download from Microsoft](https://www.microsoft.com/en-us/download/details.aspx?id=6812)
+   - If installation fails with S1023 error, uninstall VC++ 2010 Redistributable first, then reinstall after DirectX SDK
+4. **vcpkg** - Set `VCPKG_ROOT` environment variable
+
+## Building
+
+1. Open the folder in Visual Studio 2022
+2. Select configuration: `x86-Release`
+3. Build → Build All
+
+Output DLLs will be in `out/build/bin/`
+Output Libs will be in `out/lib/`
+## License
+
+Original OGRE is licensed under the MIT License. See `COPYING` for details.
+
+## Original OGRE Credits
+
+OGRE (Object-Oriented Graphics Rendering Engine) is made available under the MIT License.
+
+For the original OGRE project, visit: https://www.ogre3d.org/
