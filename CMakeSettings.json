@@ -67,6 +67,46 @@
                     "type": "BOOL"
                 },
                 {
+                    "name": "OGRE_BUILD_PLUGIN_OCTREE",
+                    "value": "True",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "OGRE_BUILD_PLUGIN_CG",
+                    "value": "False",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "OGRE_BUILD_COMPONENT_RTSHADERSYSTEM",
+                    "value": "False",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "OGRE_BUILD_COMPONENT_PAGING",
+                    "value": "False",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "OGRE_BUILD_COMPONENT_TERRAIN",
+                    "value": "False",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "OGRE_BUILD_COMPONENT_VOLUME",
+                    "value": "False",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "OGRE_BUILD_COMPONENT_PROPERTY",
+                    "value": "False",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "OGRE_BUILD_COMPONENT_OVERLAY",
+                    "value": "False",
+                    "type": "BOOL"
+                },
+                {
                     "name": "OGRE_INSTALL_TOOLS",
                     "value": "False",
                     "type": "BOOL"
@@ -174,6 +214,46 @@
                 },
                 {
                     "name": "OGRE_BUILD_PLUGIN_BSP",
+                    "value": "False",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "OGRE_BUILD_PLUGIN_OCTREE",
+                    "value": "True",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "OGRE_BUILD_PLUGIN_CG",
+                    "value": "False",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "OGRE_BUILD_COMPONENT_RTSHADERSYSTEM",
+                    "value": "False",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "OGRE_BUILD_COMPONENT_PAGING",
+                    "value": "False",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "OGRE_BUILD_COMPONENT_TERRAIN",
+                    "value": "False",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "OGRE_BUILD_COMPONENT_VOLUME",
+                    "value": "False",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "OGRE_BUILD_COMPONENT_PROPERTY",
+                    "value": "False",
+                    "type": "BOOL"
+                },
+                {
+                    "name": "OGRE_BUILD_COMPONENT_OVERLAY",
                     "value": "False",
                     "type": "BOOL"
                 },
