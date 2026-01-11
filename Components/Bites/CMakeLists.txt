@@ -79,18 +79,30 @@ endif ()
 
 # define header and source files for the library
 file(GLOB HEADER_FILES "${CMAKE_CURRENT_SOURCE_DIR}/include/*.h")
+if(NOT OGRE_BUILD_COMPONENT_OVERLAY)
+  list(REMOVE_ITEM HEADER_FILES 
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/OgreTrays.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/OgreAdvancedRenderControls.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/OgreApplicationContext.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/OgreApplicationContextBase.h")
+endif()
+
 list(APPEND HEADER_FILES
   ${PROJECT_BINARY_DIR}/include/OgreBitesPrerequisites.h
   ${CMAKE_CURRENT_SOURCE_DIR}/include/OgreBites.i)
 set(SOURCES 
-  "${CMAKE_CURRENT_SOURCE_DIR}/src/OgreAdvancedRenderControls.cpp"
-  "${CMAKE_CURRENT_SOURCE_DIR}/src/OgreApplicationContextBase.cpp"
   "${CMAKE_CURRENT_SOURCE_DIR}/src/OgreBitesConfigDialog.cpp"
   "${CMAKE_CURRENT_SOURCE_DIR}/src/OgreCameraMan.cpp"
   "${CMAKE_CURRENT_SOURCE_DIR}/src/OgreSGTechniqueResolverListener.cpp"
   "${CMAKE_CURRENT_SOURCE_DIR}/src/OgreStaticPluginLoader.cpp"
-  "${CMAKE_CURRENT_SOURCE_DIR}/src/OgreTrays.cpp"
   "${CMAKE_CURRENT_SOURCE_DIR}/src/OgreWindowEventUtilities.cpp")
+
+if(OGRE_BUILD_COMPONENT_OVERLAY)
+  list(APPEND SOURCES
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/OgreAdvancedRenderControls.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/OgreApplicationContextBase.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/OgreTrays.cpp")
+endif()
 
 if(SDL2_FOUND OR EMSCRIPTEN)
   list(APPEND SOURCES  "${CMAKE_CURRENT_SOURCE_DIR}/src/OgreApplicationContextSDL.cpp")
@@ -141,7 +153,10 @@ endif()
 # setup target
 add_library(OgreBites ${OGRE_COMP_LIB_TYPE} ${HEADER_FILES} ${SOURCES})
 set_target_properties(OgreBites PROPERTIES VERSION ${OGRE_SOVERSION} SOVERSION ${OGRE_SOVERSION})
-target_link_libraries(OgreBites PUBLIC OgreMain OgreOverlay PRIVATE ${DEPENDENCIES})
+target_link_libraries(OgreBites PUBLIC OgreMain PRIVATE ${DEPENDENCIES})
+if (OGRE_BUILD_COMPONENT_OVERLAY)
+  target_link_libraries(OgreBites PUBLIC OgreOverlay)
+endif()
 if (OGRE_BUILD_COMPONENT_RTSHADERSYSTEM)
   target_link_libraries(OgreBites PUBLIC OgreRTShaderSystem)
 endif ()

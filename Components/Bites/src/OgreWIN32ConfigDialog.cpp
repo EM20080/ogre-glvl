@@ -108,6 +108,20 @@ namespace OgreBites
             lstRend = &Root::getSingleton().getAvailableRenderers();
             pRend = lstRend->begin();            
             i = 0;
+            
+            // Force Select Direct3D9 if no render system selected
+            if (!dlg->mImpl->mSelectedRenderSystem)
+            {
+                for (auto it = lstRend->begin(); it != lstRend->end(); ++it)
+                {
+                    if ((*it)->getName().find("Direct3D9") != String::npos)
+                    {
+                        dlg->mImpl->mSelectedRenderSystem = *it;
+                        break;
+                    }
+                }
+            }
+            
             while (pRend != lstRend->end())
             {
                 hwndDlgItem = GetDlgItem(hDlg, IDC_CBO_RENDERSYSTEM);
@@ -130,8 +144,12 @@ namespace OgreBites
                     String strLine;
                     while( pOpt!= opts.end() )
                     {
-                        strLine = pOpt->second.name + ": " + pOpt->second.currentValue;
-                        SendMessage(hwndDlgItem, LB_ADDSTRING, 0, (LPARAM)strLine.c_str());
+                        // Skip Allow DirectX9Ex option, It's forced.
+                        if (pOpt->second.name != "Allow DirectX9Ex")
+                        {
+                            strLine = pOpt->second.name + ": " + pOpt->second.currentValue;
+                            SendMessage(hwndDlgItem, LB_ADDSTRING, 0, (LPARAM)strLine.c_str());
+                        }
                         ++pOpt;
                     }
                 }
