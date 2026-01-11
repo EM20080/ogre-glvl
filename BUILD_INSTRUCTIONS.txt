@@ -1,0 +1,73 @@
+OGRE 1.12.13 - Windows Release Build for SonicGLvl
+====================================================
+
+This is a minimal Windows-only distribution of OGRE configured specifically for SonicGLvl.
+
+INCLUDED COMPONENTS:
+-------------------
+- OgreMain (Core library)
+- RenderSystem_Direct3D9
+- RenderSystem_Direct3D11
+- Plugin_OctreeSceneManager
+- OgreBites (Application framework)
+- OgreOverlay (2D overlay system with ImGui support)
+- OgreRTShaderSystem (Runtime shader system)
+
+REQUIREMENTS:
+------------
+- Windows operating system
+- Visual Studio 2015 or later
+- CMake 3.15 or later
+- DirectX SDK (included in Windows SDK for Windows 8.0+)
+
+RECOMMENDED: Install dependencies via vcpkg
+-------------------------------------------
+The easiest way to get all dependencies is using vcpkg:
+
+1. Install vcpkg if you don't have it:
+   git clone https://github.com/Microsoft/vcpkg.git
+   cd vcpkg
+   .\bootstrap-vcpkg.bat
+
+2. Install required packages:
+   .\vcpkg install zlib:x64-windows freetype:x64-windows zziplib:x64-windows
+
+3. Integrate vcpkg with Visual Studio:
+   .\vcpkg integrate install
+
+4. When opening the OGRE folder in Visual Studio, it will automatically find the dependencies
+
+ALTERNATIVE: Build dependencies automatically
+---------------------------------------------
+Set OGRE_BUILD_DEPENDENCIES=ON in CMake and it will download and build zlib, zziplib, and freetype automatically.
+
+BUILD INSTRUCTIONS:
+------------------
+1. Open the folder in Visual Studio (File > Open > Folder)
+2. Wait for CMake to automatically configure the project
+3. Select your desired build configuration (x64-Debug, x64-Release, x64-RelWithDebInfo)
+4. Build > Build All (Ctrl+Shift+B)
+
+The built libraries will be in:
+- Bin/x64-<Config>/Bin/ - DLLs and runtime files
+- Bin/x64-<Config>/Lib/ - Import libraries (.lib files)
+
+Example: x64-Release output goes to:
+  - Bin/x64-Release/Bin/ (DLLs)
+  - Bin/x64-Release/Lib/ (LIBs)
+
+CMake will automatically detect DirectX and configure the build.
+All unnecessary components have been removed for a clean, fast build.
+
+WHAT WAS REMOVED:
+----------------
+- OpenGL/OpenGL ES render systems
+- Metal render system (iOS/macOS)
+- Mobile platforms (Android, iOS, Emscripten)
+- Language bindings (Python, Java, C#)
+- Sample applications
+- Command-line tools
+- Unit tests
+- Unused plugins (BSP, ParticleFX, PCZ, DotScene, Assimp, Cg, image codecs)
+- Unused components (Terrain, Paging, Volume, Property, HLMS, MeshLodGenerator)
+
