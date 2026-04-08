@@ -45,6 +45,11 @@
           "name": "OGRE_BUILD_DEPENDENCIES",
           "value": "False",
           "type": "BOOL"
+        },
+        {
+          "name": "OGRE_STATIC",
+          "value": "True",
+          "type": "BOOL"
         }
       ]
     },

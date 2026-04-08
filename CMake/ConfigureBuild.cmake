@@ -148,9 +148,6 @@ configure_file(${OGRE_TEMPLATES_DIR}/OgreGLES2Config.h.in ${PROJECT_BINARY_DIR}/
 
 set(OGRE_LIB_SUFFIX "")
 
-if (OGRE_STATIC)
-  set(OGRE_LIB_SUFFIX "${OGRE_LIB_SUFFIX}Static")
-endif ()
 if (BUILD_TYPE_LOWER STREQUAL "debug" AND WIN32)
   set(OGRE_LIB_SUFFIX "${OGRE_LIB_SUFFIX}_d")
 endif ()

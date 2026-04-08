@@ -192,8 +192,7 @@ endfunction(ogre_produces_pdb)
 function(ogre_config_lib LIBNAME EXPORT)
   ogre_config_common(${LIBNAME})
   if (OGRE_STATIC)
-    # add static prefix, if compiling static version
-    set_target_properties(${LIBNAME} PROPERTIES OUTPUT_NAME ${LIBNAME}Static)
+    set_target_properties(${LIBNAME} PROPERTIES OUTPUT_NAME ${LIBNAME})
   else (OGRE_STATIC)
 	if (MINGW)
 	  # remove lib prefix from DLL outputs
@@ -205,11 +204,11 @@ function(ogre_config_lib LIBNAME EXPORT)
   if (OGRE_INSTALL_PDB)
     # install debug pdb files
     if (OGRE_STATIC)
-	  install(FILES ${PROJECT_BINARY_DIR}/lib${OGRE_LIB_DEBUG_PATH}/${LIBNAME}Static_d.pdb
+	  install(FILES ${PROJECT_BINARY_DIR}/lib${OGRE_LIB_DEBUG_PATH}/${LIBNAME}_d.pdb
 	    DESTINATION ${OGRE_LIB_DIRECTORY}${OGRE_LIB_DEBUG_PATH}
 		CONFIGURATIONS Debug
 	  )
-	  install(FILES ${PROJECT_BINARY_DIR}/lib${OGRE_LIB_RELWDBG_PATH}/${LIBNAME}Static.pdb
+	  install(FILES ${PROJECT_BINARY_DIR}/lib${OGRE_LIB_RELWDBG_PATH}/${LIBNAME}.pdb
 	    DESTINATION ${OGRE_LIB_DIRECTORY}${OGRE_LIB_RELWDBG_PATH}
 		CONFIGURATIONS RelWithDebInfo
 	  )
@@ -263,8 +262,7 @@ function(ogre_config_plugin PLUGINNAME)
 
   set_target_properties(${PLUGINNAME} PROPERTIES VERSION ${OGRE_SOVERSION})
   if (OGRE_STATIC)
-    # add static prefix, if compiling static version
-    set_target_properties(${PLUGINNAME} PROPERTIES OUTPUT_NAME ${PLUGINNAME}Static)
+    set_target_properties(${PLUGINNAME} PROPERTIES OUTPUT_NAME ${PLUGINNAME})
 
     if(APPLE_IOS)
       set_target_properties(${PLUGINNAME} PROPERTIES XCODE_ATTRIBUTE_GCC_THUMB_SUPPORT "NO")
@@ -282,11 +280,11 @@ function(ogre_config_plugin PLUGINNAME)
   if (OGRE_INSTALL_PDB)
     # install debug pdb files
     if (OGRE_STATIC)
-	  install(FILES ${PROJECT_BINARY_DIR}/lib${OGRE_LIB_DEBUG_PATH}/${PLUGINNAME}Static_d.pdb
+	  install(FILES ${PROJECT_BINARY_DIR}/lib${OGRE_LIB_DEBUG_PATH}/${PLUGINNAME}_d.pdb
 	    DESTINATION ${OGRE_LIB_DIRECTORY}${OGRE_LIB_DEBUG_PATH}/opt
 		CONFIGURATIONS Debug
 	  )
-	  install(FILES ${PROJECT_BINARY_DIR}/lib${OGRE_LIB_RELWDBG_PATH}/${PLUGINNAME}Static.pdb
+	  install(FILES ${PROJECT_BINARY_DIR}/lib${OGRE_LIB_RELWDBG_PATH}/${PLUGINNAME}.pdb
 	    DESTINATION ${OGRE_LIB_DIRECTORY}${OGRE_LIB_RELWDBG_PATH}/opt
 		CONFIGURATIONS RelWithDebInfo
 	  )
